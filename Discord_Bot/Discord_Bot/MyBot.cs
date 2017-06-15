@@ -57,8 +57,21 @@ namespace Discord_Bot
             //Connect
             discord.ExecuteAndWait(async () =>
             {
+                //Security Stuff
+                String prepath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                String path = prepath + @"\key\api_key.txt";
+                String key = "";
+                StreamReader reader = null;
 
-                await discord.Connect("", TokenType.Bot);   //No connect
+                Console.WriteLine(path);
+
+                if (File.Exists(path))
+                {
+                    reader = new StreamReader(path);
+                    Console.WriteLine("Reader active");
+                }
+                await discord.Connect(reader.ReadLine(), TokenType.Bot);   //No connect
+                reader.Close();
             });
             Console.WriteLine("Client connected!");
         }
