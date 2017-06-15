@@ -22,7 +22,7 @@ namespace Discord_Bot
             setUp(discord);
             setUpCommands(discord);
 
-            //discord.SetGame("Nooob noooob");
+            //discord.SetGame("Noooob noooob");
 
             Connect(discord);        
 
